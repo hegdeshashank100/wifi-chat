@@ -1,0 +1,35 @@
+name: wifi_chat
+description: SOS Emergency Chat App
+
+publish_to: "none" # not publishing to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  permission_handler: ^12.0.1
+  geolocator: ^10.1.0
+  path_provider: ^2.1.5
+  flutter_local_notifications: ^17.2.2 # NEW: For notifications
+  flutter_foreground_task: ^8.1.0 # NEW: For background service
+  shared_preferences: ^2.2.2 # NEW: For caching endpoints
+
+  nearby_connections:
+    path: ./nearby_connections
+
+  # Nearby Connections API (patched fork to fix AndroidManifest issue)
+
+  # Location (if you need approximate location for discovery metadata)
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
