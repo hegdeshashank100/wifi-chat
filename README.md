@@ -1,318 +1,398 @@
+<div align="center">
+
 # 📱 WiFi Chat
 
-A Flutter mobile application that enables peer-to-peer real-time messaging between devices over local WiFi networks without requiring internet connectivity [web:12][web:15]. Perfect for offline communication in classrooms, events, or areas with limited connectivity.
+### Peer-to-Peer Messaging Without Internet
 
-![Flutter](https://img.shields.io/badge/Flutter-3.0+-02569B?logo=flutter)
-![Dart](https://img.shields.io/badge/Dart-3.0+-0175C2?logo=dart)
-![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-green)
-![License](https://img.shields.io/badge/License-MIT-blue)
+*Connect, Chat, and Share — All Offline*
+
+---
+
+**Tech stack:** Flutter 3+, Dart 3+ · Android · iOS  
+
+
+</div>
+
+---
+
+## 🎯 About
+
+**WiFi Chat** is a Flutter-powered mobile app for **real-time peer-to-peer messaging** over a **local WiFi network** — no internet needed.
+
+Use it in:
+
+- Classrooms
+- Events and conferences
+- Remote areas
+- Offices that want local-only chat
+
+Your messages and files stay inside the local network.
+
+---
 
 ## ✨ Features
 
-### Core Functionality
-- 🔌 **Offline Messaging** - Chat without internet access using WiFi Direct technology [web:12][web:15]
-- 📡 **Peer-to-Peer** - Direct device-to-device communication with no server required [web:12][web:19]
-- 🔍 **Auto Discovery** - Automatically find nearby devices on the same network [web:15][web:18]
-- ⚡ **Real-time Chat** - Instant message delivery with live connection status [web:15]
-- 👥 **Multi-user Support** - Connect and chat with multiple users simultaneously [web:12]
-- 📤 **File Sharing** - Transfer images and files between connected devices [web:15][web:17]
-- 🔐 **Secure & Private** - All data stays within your local network
+### 💬 Core Messaging
 
-### Technical Highlights
-- Built with Flutter for smooth cross-platform performance [attached_file:1]
-- WiFi Direct (Android) and MultipeerConnectivity (iOS) implementation [web:15][web:18]
-- TCP/UDP socket communication for reliable message transmission [web:20]
-- Material Design UI with responsive layouts [attached_file:1]
+- Real-time message delivery
+- Multi-user chat in the same room
+- Connection status indicators
+- Message history
+- Auto-reconnection on network changes
+
+### 🛠️ Advanced Features
+
+- File and image sharing
+- Automatic device discovery
+- WiFi Direct (Android P2P)
+- MultipeerConnectivity (iOS)
+- Material Design 3 based UI
+
+### 🎯 Perfect For
+
+| Education | Events | Travel | Enterprise |
+|:--------:|:------:|:------:|:----------:|
+| Classroom collaboration | Event coordination | Remote area communication | Secure internal chat |
+
+---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 📋 Prerequisites
 
-Before you begin, ensure you have the following installed:
+Make sure you have:
 
-- **Flutter SDK** (3.0 or higher) - [Install Flutter](https://docs.flutter.dev/get-started/install)
-- **Dart SDK** (3.0+)
-- **Android Studio** or **VS Code** with Flutter extensions
-- **Physical Device** (Android 5.0+ or iOS 10+) - WiFi Direct requires actual hardware
+```bash
+✓ Flutter SDK 3.0+
+✓ Dart SDK 3.0+
+✓ Android Studio or VS Code
+✓ Physical device (Android 5.0+ / iOS 10+)
+```
 
-### Installation
+> ⚠️ **Note:** WiFi Direct requires real hardware. Emulators will not work for P2P tests.
 
-1. **Clone the repository**
+---
+
+## 📥 Installation
+
+### Step-by-step setup
+
+1️⃣ **Clone the repository**
+
+```bash
 git clone https://github.com/hegdeshashank100/wifi-chat.git
 cd wifi_chat
+```
 
-text
+2️⃣ **Install dependencies**
 
-2. **Install dependencies**
+```bash
 flutter pub get
+```
 
-text
+3️⃣ **Verify your setup**
 
-3. **Check your Flutter setup**
+```bash
 flutter doctor
+```
 
-text
+4️⃣ **Connect device and run**
 
-4. **Connect your device and run**
+```bash
 flutter run
+```
 
-text
+### New to Flutter?
 
-### First Time Setup
+Useful official resources:
 
-If this is your first Flutter project, check out these resources from the Flutter documentation [attached_file:1]:
+- First app tutorial: https://docs.flutter.dev/get-started/codelab  
+- Cookbook examples: https://docs.flutter.dev/cookbook  
+- Layout basics: https://docs.flutter.dev/ui/layout
 
-- 📚 [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- 🍳 [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-- 📖 [Flutter fundamentals](https://docs.flutter.dev/)
-- 🎨 [Building layouts in Flutter](https://docs.flutter.dev/ui/layout)
+---
 
-## 📋 Platform Support
+## 📱 Platform Support
 
-| Platform | Technology | Minimum Version | Status |
-|----------|-----------|-----------------|--------|
-| **Android** | WiFi Direct (P2P) [web:12][web:15] | API 21 (Android 5.0) | ✅ Fully Supported |
-| **iOS** | MultipeerConnectivity [web:15][web:18] | iOS 10.0+ | ✅ Fully Supported |
+| Platform | Technology              | Min Version              | Status            |
+|:--------:|-------------------------|:------------------------:|:-----------------:|
+| Android  | WiFi Direct (P2P)       | API 21 (Android 5.0)     | ✅ Fully supported |
+| iOS      | MultipeerConnectivity   | iOS 10.0+                | ✅ Fully supported |
+
+---
 
 ## 🛠️ Technical Architecture
 
 ### Technology Stack
-- **Framework**: Flutter 3.0+ / Dart 3.0+ [attached_file:1]
-- **Android Connectivity**: WiFi P2P (WiFi Direct) [web:12][web:15]
-- **iOS Connectivity**: MultipeerConnectivity Framework [web:15][web:18]
-- **Communication Protocol**: TCP/UDP Sockets [web:20]
-- **State Management**: Provider / Riverpod (recommended)
-- **UI Design**: Material Design 3 [attached_file:1]
 
-### Key Dependencies
+```text
+┌─────────────────────────────────────────────────────────┐
+│                 Flutter 3.0+ / Dart 3.0+                │
+├─────────────────────────────────────────────────────────┤
+│  UI Layer          │  Material Design 3                 │
+│  State Management  │  Provider / Riverpod               │
+│  Communication     │  TCP/UDP sockets                   │
+│  Android P2P       │  WiFi Direct API                   │
+│  iOS P2P           │  MultipeerConnectivity framework   │
+└─────────────────────────────────────────────────────────┘
+```
+
+<details>
+<summary><b>🔧 Key Dependencies (pubspec.yaml)</b></summary>
+
+```yaml
 dependencies:
-flutter:
-sdk: flutter
-flutter_p2p_connection: ^latest # WiFi Direct for Android
-wifi_direct_plugin: ^latest # Alternative P2P plugin
-nearby_service: ^latest # Cross-platform nearby connectivity
+  flutter:
+    sdk: flutter
 
-text
+  # Connectivity & P2P
+  flutter_p2p_connection: ^latest      # WiFi Direct for Android
+  wifi_direct_plugin: ^latest          # Alternative P2P plugin
+  nearby_service: ^latest              # Cross-platform connectivity
 
-### How It Works
+  # State management
+  provider: ^latest                    # Or Riverpod, if you prefer
+```
 
-1. **Discovery Phase**: App scans for nearby devices using WiFi Direct [web:12][web:15]
-2. **Connection**: User selects a device and establishes P2P connection [web:12]
-3. **Host/Client Model**: One device acts as host, others connect as clients [web:12][web:15]
-4. **Message Exchange**: Real-time bidirectional communication over established socket [web:15][web:20]
-5. **Data Transfer**: Supports text messages and binary file transfers [web:15][web:17]
+</details>
 
-## 📱 Usage
+### 🔄 Data Flow
 
-### Starting a Chat Session
+```mermaid
+graph LR
+    A[🔍 Discovery] --> B[🤝 Connection]
+    B --> C[🏠 Host / Client Setup]
+    C --> D[💬 Message Exchange]
+    D --> E[📤 File & Data Transfer]
+```
 
-**As Host:**
-1. Open the app and tap "Create Room"
+1. Scan for nearby devices  
+2. Establish a P2P connection (WiFi Direct / MultipeerConnectivity)  
+3. Negotiate host/client roles  
+4. Exchange messages and transfer files over TCP/UDP sockets  
+
+---
+
+## 📖 Usage Guide
+
+### 🏠 Acting as Host
+
+1. Open the app and choose **Create Room**
 2. Wait for nearby devices to discover your room
-3. Accept connection requests from other users
+3. Accept incoming connection requests
+4. Start chatting and sharing files
 
-**As Client:**
-1. Open the app and tap "Join Room"
-2. Select a visible host from the list
-3. Send connection request and start chatting
+### 📲 Acting as Client
 
-## 🔧 Configuration
+1. Open the app and choose **Join Room**
+2. Select a visible host from the device list
+3. Send a connection request
+4. Start chatting once connected
 
-### Android Permissions
+---
 
-Add to `android/app/src/main/AndroidManifest.xml`:
+## ⚙️ Configuration
 
-<manifest> <!-- WiFi Direct Permissions --> <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" android:usesPermissionFlags="neverForLocation" />
-text
-<!-- Android 13+ -->
-<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+### 🤖 Android Permissions
 
-<uses-feature android:name="android.hardware.wifi.direct" android:required="true"/>
-</manifest> ```
-iOS Permissions
-Add to ios/Runner/Info.plist:
+Add the following to `android/app/src/main/AndroidManifest.xml`:
 
-text
-<dict>
-    <!-- Local Network Permission -->
-    <key>NSLocalNetworkUsageDescription</key>
-    <string>WiFi Chat needs access to local network to discover and connect with nearby devices for peer-to-peer messaging</string>
-    
-    <!-- Bonjour Services -->
-    <key>NSBonjourServices</key>
-    <array>
-        <string>_wifi-chat._tcp</string>
-        <string>_wifi-chat._udp</string>
-    </array>
-    
-    <!-- Background Modes (Optional) -->
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>fetch</string>
-        <string>remote-notification</string>
-    </array>
-</dict>
-📂 Project Structure
-text
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"/>
+```
+
+On Android 13+ you may also need to request `NEARBY_WIFI_DEVICES` at runtime.
+
+### 🍎 iOS Permissions
+
+Add to `ios/Runner/Info.plist`:
+
+```xml
+<key>NSLocalNetworkUsageDescription</key>
+<string>WiFi Chat needs access to the local network to discover and connect with nearby devices for peer-to-peer messaging.</string>
+
+<key>NSBonjourServices</key>
+<array>
+  <string>_wifi-chat._tcp</string>
+  <string>_wifi-chat._udp</string>
+</array>
+
+<key>UIBackgroundModes</key>
+<array>
+  <string>fetch</string>
+  <string>remote-notification</string>
+</array>
+```
+
+Make sure your Bonjour service names match whatever you configure in the app.
+
+---
+
+## 📂 Project Structure
+
+```text
 wifi_chat/
 ├── lib/
-│   ├── main.dart                 # App entry point
-│   ├── models/                   # Data models
+│   ├── main.dart                    # App entry point
+│   ├── models/                      # Data models
 │   │   ├── message.dart
 │   │   ├── user.dart
 │   │   └── device.dart
-│   ├── services/                 # Business logic
-│   │   ├── wifi_service.dart    # WiFi Direct handling
-│   │   ├── socket_service.dart  # Socket communication
-│   │   └── storage_service.dart # Local data storage
-│   ├── providers/               # State management
+│   ├── services/                    # Business logic & platform APIs
+│   │   ├── wifi_service.dart        # WiFi Direct handling
+│   │   ├── socket_service.dart      # Socket communication
+│   │   └── storage_service.dart     # Local storage (e.g., Hive/shared_prefs)
+│   ├── providers/                   # State management (Provider/Riverpod)
 │   │   ├── chat_provider.dart
 │   │   └── connection_provider.dart
-│   ├── screens/                 # UI screens
+│   ├── screens/                     # UI screens
 │   │   ├── home_screen.dart
 │   │   ├── chat_screen.dart
 │   │   └── device_list_screen.dart
-│   └── widgets/                 # Reusable widgets
+│   └── widgets/                     # Reusable UI components
 │       ├── message_bubble.dart
 │       ├── device_card.dart
 │       └── connection_status.dart
-├── android/                     # Android specific code
-├── ios/                        # iOS specific code
-└── pubspec.yaml               # Dependencies
-💡 Use Cases
-🎓 Education: Share notes and collaborate in classrooms without internet [web:12][web:17]
+├── android/                         # Android config and native code
+├── ios/                             # iOS config and native code
+└── pubspec.yaml                     # Flutter dependencies
+```
 
-🎪 Events: Coordinate with team members at conferences or festivals
+---
 
-✈️ Travel: Stay connected with companions in remote areas
+## 💡 Use Cases
 
-🏢 Enterprise: Secure internal communication in sensitive environments
+| Scenario    | Description                                      |
+|------------|--------------------------------------------------|
+| Education  | Share notes and collaborate in classrooms offline |
+| Events     | Coordinate staff and teams at conferences         |
+| Travel     | Stay connected in areas with poor or no internet  |
+| Privacy    | Keep conversations local with no cloud storage    |
 
-🎮 Gaming: Local multiplayer chat for mobile games
+---
 
-🔒 Privacy: Private conversations with no cloud storage or tracking
+## 🐛 Troubleshooting
 
-🐛 Troubleshooting
-Common Issues
-Connection fails on Android:
+<details>
+<summary><b>🔧 Common Issues & Fixes</b></summary>
 
-Ensure Location services are enabled (required for WiFi Direct)
+### ❌ Connection fails on Android
 
-Grant all necessary permissions in app settings
+- Ensure **Location services** are enabled (Android requires this for WiFi Direct)
+- Grant all requested permissions in system settings
+- Confirm WiFi is turned on
 
-Check that WiFi is turned on
+### ❌ Devices do not discover each other
 
-Devices not discovering each other:
+- Confirm both devices are on the **same WiFi network** (when not using P2P)
+- Restart the app on both devices
+- Toggle WiFi off and back on
+- Make sure battery saver or VPN is not interfering with local discovery
 
-Make sure both devices are on the same WiFi network
+### ❌ Messages are not sending
 
-Restart the app on both devices
+- Check that connection status shows **Connected**
+- Verify network permissions are granted
+- Try disconnecting and reconnecting
+- Check that host and client roles are correctly set
 
-Toggle WiFi off and on
+</details>
 
-Messages not sending:
+---
 
-Verify the connection status indicator shows "Connected"
+## 🤝 Contributing
 
-Check network permissions are granted
+Contributions are welcome.
 
-Try disconnecting and reconnecting
+1. Fork the project
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m "Add my feature"`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
 
-🤝 Contributing
-Contributions make the open-source community an amazing place to learn and create! Any contributions are greatly appreciated.
+### 📝 Development Guidelines
 
-Fork the Project
+- Follow the official Dart & Flutter style guides  
+- Use meaningful commit messages  
+- Add comments for non-trivial logic  
+- Test on both Android and iOS where possible  
+- Update documentation for new features and major changes  
 
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
+---
 
-Commit your Changes (git commit -m 'Add some AmazingFeature')
+## 🔮 Roadmap
 
-Push to the Branch (git push origin feature/AmazingFeature)
+Planned improvements:
 
-Open a Pull Request
+- [ ] End-to-end encryption  
+- [ ] Voice message support  
+- [ ] Image compression for media sharing  
+- [ ] Group chat with admin controls  
+- [ ] Message read receipts  
+- [ ] Dark mode theme  
+- [ ] Custom notification sounds  
+- [ ] Export chat history to file  
 
-Development Guidelines
-Follow Flutter's official style guide [attached_file:1]
+---
 
-Write meaningful commit messages
+## 📄 License
 
-Add comments for complex logic
+This project is licensed under the **MIT License**.  
+See the `LICENSE` file for full details.
 
-Test on both Android and iOS devices
+---
 
-Update documentation for new features
+## 👨‍💻 Author
 
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **Name:** Shashank Hegde  
+- **GitHub:** https://github.com/hegdeshashank100  
+- **Project repo:** https://github.com/hegdeshashank100/wifi-chat
 
-👨‍💻 Author
-Shashank Hegde
+---
 
-GitHub: @hegdeshashank100
+## 🙏 Acknowledgments
 
-Project: wifi-chat
+Thanks to:
 
-🙏 Acknowledgments
-Special thanks to the Flutter community and these amazing packages:
+- `flutter_p2p_connection` – WiFi Direct connectivity  
+- `wifi_direct_plugin` – P2P communication  
+- `nearby_service` – Cross-platform connectivity helpers  
+- Flutter documentation and community resources  
 
-flutter_p2p_connection - WiFi Direct connectivity [web:12]
+---
 
-wifi_direct_plugin - P2P communication [web:15]
+## 📚 Resources
 
-nearby_service - Cross-platform nearby connectivity [web:18]
+- Flutter docs: https://docs.flutter.dev  
+- WiFi Direct (Android): https://developer.android.com/guide/topics/connectivity/wifip2p  
+- MultipeerConnectivity (iOS): https://developer.apple.com/documentation/multipeerconnectivity  
+- Dart socket programming: https://api.dart.dev/stable/dart-io/Socket-class.html  
 
-Flutter Documentation - Comprehensive guides and tutorials [attached_file:1]
+---
 
-📚 Resources
-Flutter Learning Resources
-Flutter Documentation [attached_file:1]
+## 📞 Support
 
-Flutter Cookbook
+You can:
 
-Building Layouts
+- Report bugs: https://github.com/hegdeshashank100/wifi-chat/issues  
+- Request features: https://github.com/hegdeshashank100/wifi-chat/issues  
+- Ask questions: https://github.com/hegdeshashank100/wifi-chat/discussions  
 
-Understanding Constraints
-
-Adding Interactivity
-
-Related Technologies
-WiFi Direct Overview [web:15]
-
-MultipeerConnectivity (iOS)
-
-Socket Programming in Dart [web:20]
-
-📞 Support
-If you encounter any issues or have questions:
-
-🐛 Report a Bug
-
-💡 Request a Feature
-
-📧 Contact: Create an issue
-
-🔮 Roadmap
- End-to-end encryption for messages
-
- Voice message support
-
- Image compression before transfer
-
- Group chat rooms with admin controls
-
- Message read receipts
-
- Dark mode theme
-
- Custom notification sounds
-
- Export chat history
+---
 
 <div align="center">
-⭐ Star this repository if you find it helpful!
 
-Made with ❤️ using Flutter
+⭐ If you find this project useful, consider starring the repository.
 
-Report Bug · Request Feature
+**Made with ❤️ using Flutter**
+
+<br>
+
+_Last updated: December 2025_
 
 </div>
