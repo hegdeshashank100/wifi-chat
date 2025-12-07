@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
-import 'screens/sos_screen_optimized.dart';
+import 'screens/chat_list_screen.dart';
 
 void main() {
-  runApp(const SOSApp());
+  runApp(const WiFiChatApp());
 }
 
-class SOSApp extends StatelessWidget {
-  const SOSApp({super.key});
+class WiFiChatApp extends StatelessWidget {
+  const WiFiChatApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '🆘 SOS Emergency',
+      title: 'WiFi Chat',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.red,
+          backgroundColor: Color(0xFF0088CC),
           foregroundColor: Colors.white,
+          elevation: 0,
         ),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF0088CC),
+        ),
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const SOSScreenImproved(),
+      home: const ChatListScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
