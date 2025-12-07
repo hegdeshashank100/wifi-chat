@@ -46,17 +46,18 @@ class MessagingService extends ChangeNotifier {
   }
 
   Future<void> _requestPermissions() async {
+    // Only request essential permissions for Nearby Connections
     final permissions = [
-      Permission.location,
-      Permission.bluetooth,
-      Permission.bluetoothAdvertise,
-      Permission.bluetoothConnect,
-      Permission.bluetoothScan,
-      Permission.nearbyWifiDevices,
+      Permission.location, // Required for WiFi Direct/Bluetooth discovery
+      Permission.bluetoothAdvertise, // Android 12+ for advertising
+      Permission.bluetoothConnect, // Android 12+ for connecting
+      Permission.bluetoothScan, // Android 12+ for scanning
+      Permission.nearbyWifiDevices, // Android 13+ for WiFi Direct
     ];
 
     for (final permission in permissions) {
-      if (await permission.isDenied) {
+      final status = await permission.status;
+      if (status.isDenied || status.isPermanentlyDenied) {
         await permission.request();
       }
     }
