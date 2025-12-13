@@ -157,6 +157,27 @@ class DatabaseHelper {
     );
   }
 
+  Future<int> updateMessageStatus(String id, MessageStatus status) async {
+    final db = await database;
+    return await db.update(
+      'messages',
+      {'status': status.index},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<List<Message>> getPendingOutbound(String contactId) async {
+    final db = await database;
+    final result = await db.query(
+      'messages',
+      where: 'receiverId = ? AND isMe = 1 AND status < ?',
+      whereArgs: [contactId, MessageStatus.delivered.index],
+      orderBy: 'timestamp ASC',
+    );
+    return result.map((map) => Message.fromMap(map)).toList();
+  }
+
   Future<int> getUnreadCount(String chatId) async {
     final db = await database;
     final result = await db.rawQuery(

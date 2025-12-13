@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'screens/chat_list_screen.dart';
+import 'screens/login_screen.dart';
+import 'services/profile_service.dart';
 
-void main() {
-  runApp(const WiFiChatApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final profileService = ProfileService();
+  final hasProfile = await profileService.hasProfile();
+
+  runApp(WiFiChatApp(
+    profileService: profileService,
+    hasProfile: hasProfile,
+  ));
 }
 
 class WiFiChatApp extends StatelessWidget {
-  const WiFiChatApp({super.key});
+  final ProfileService profileService;
+  final bool hasProfile;
+
+  const WiFiChatApp({
+    super.key,
+    required this.profileService,
+    required this.hasProfile,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +41,9 @@ class WiFiChatApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const ChatListScreen(),
+      home: hasProfile
+          ? const ChatListScreen()
+          : LoginScreen(profileService: profileService),
       debugShowCheckedModeBanner: false,
     );
   }

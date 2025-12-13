@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../models/contact.dart';
 import '../database/database_helper.dart';
 import '../services/messaging_service.dart';
@@ -18,12 +19,49 @@ class _ContactsScreenState extends State<ContactsScreen> {
   List<Contact> _filteredContacts = [];
   final TextEditingController _searchController = TextEditingController();
   bool _isLoading = true;
+  bool _permissionsOkay = true;
 
   @override
   void initState() {
     super.initState();
     _loadContacts();
     _searchController.addListener(_filterContacts);
+    _checkPermissions();
+  }
+
+  Future<void> _checkPermissions() async {
+    final permissions = [
+      Permission.location,
+      Permission.bluetoothAdvertise,
+      Permission.bluetoothConnect,
+      Permission.bluetoothScan,
+      Permission.nearbyWifiDevices,
+      Permission.notification,
+    ];
+
+    final results = await Future.wait(permissions.map((p) => p.status));
+    final ok = results.every((s) => s.isGranted || s.isLimited);
+    setState(() => _permissionsOkay = ok);
+  }
+
+  Future<void> _requestPermissions() async {
+    final permissions = [
+      Permission.location,
+      Permission.bluetoothAdvertise,
+      Permission.bluetoothConnect,
+      Permission.bluetoothScan,
+      Permission.nearbyWifiDevices,
+      Permission.notification,
+    ];
+
+    for (final p in permissions) {
+      final status = await p.status;
+      if (status.isDenied || status.isPermanentlyDenied) {
+        await p.request();
+      }
+    }
+
+    await _checkPermissions();
   }
 
   Future<void> _loadContacts() async {
@@ -66,6 +104,32 @@ class _ContactsScreenState extends State<ContactsScreen> {
       ),
       body: Column(
         children: [
+          if (!_permissionsOkay)
+            Container(
+              margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.orange[50],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.orange[200]!),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline, color: Colors.orange),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Enable location, Bluetooth, and notifications to discover nearby devices.',
+                      style: TextStyle(color: Colors.orange[800]),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: _requestPermissions,
+                    child: const Text('ENABLE'),
+                  ),
+                ],
+              ),
+            ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(

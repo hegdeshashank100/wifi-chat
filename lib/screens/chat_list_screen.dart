@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/chat.dart';
-import '../models/contact.dart';
-import '../models/message.dart';
 import '../database/database_helper.dart';
 import '../services/messaging_service.dart';
 import 'chat_screen.dart';
@@ -100,8 +98,21 @@ class _ChatListScreenState extends State<ChatListScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('WiFi Chat',
-            style: TextStyle(fontWeight: FontWeight.w600)),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/wifilogo.png',
+              height: 32,
+              width: 32,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              'WiFi Chat',
+              style: TextStyle(fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
         backgroundColor: const Color(0xFF0088CC),
         elevation: 0,
         actions: [
